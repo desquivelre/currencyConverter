@@ -1,5 +1,7 @@
 import javax.swing.*;
 
+import static java.lang.System.exit;
+
 public class Main {
     public static void main(String[] args) {
         ValidationUtil validationUtil = new ValidationUtil();
@@ -12,7 +14,7 @@ public class Main {
                 case "Conversor de Moneda":
                     String input = JOptionPane.showInputDialog("Ingresa la cantidad de dinero que deseas convertir: ");
 
-                    if (validationUtil.validateDouble(input) == true) {
+                    if (validationUtil.validateDouble(input)) {
                         double Minput = validationUtil.parseDoubleFromString(input);
 
                         formulario.ConvertirMonedas(Minput);
@@ -23,13 +25,12 @@ public class Main {
                             System.out.println("Selecciona opción Afirmativa");
                         } else {
                             JOptionPane.showMessageDialog(null, "Programa terminado");
+                            exit(0);
                         }
-
                     } else {
                         JOptionPane.showMessageDialog(null, "Valor inválido");
                     }
                     break;
-
             }
         }
     }
